@@ -1363,6 +1363,12 @@
             noteD = JSON.stringify(obj);
         }
 
+		tinyMCE.triggerSave();
+		var testingAgn = $('.headerForEvent').length;
+        for (var indexTest = 1; indexTest <= testingAgn; indexTest++) {
+            console.log(document.getElementById("textAreaSet" + indexTest).value);
+        }
+
         var numberOfHeadersForEvents = $('.headerForEvent').length;
         var k;
 
@@ -1372,7 +1378,7 @@
 
             if (document.getElementById('uniqueheaderForEvent' + k).innerText == "") //header no input
             {
-                if (tinyMCE.get('textAreaSet' + k).getContent() == '') //both header and textarea no input
+                if (document.getElementById("textAreaSet" + k).value == "") //both header and textarea no input ===> tinyMCE.get('textAreaSet' + k).getContent() == ''
                 {
                     var headerEventToPush = "Title...";
                     var descriptionEventToPush = "Notes...";
@@ -1388,7 +1394,7 @@
                 else //header no input but textarea got input
                 {
                     var headerEventToPush = "Title...";
-                    var descriptionEventToPush = tinyMCE.get('textAreaSet' + k).getContent();
+                    var descriptionEventToPush = document.getElementById("textAreaSet" + k).value; //tinyMCE.get('textAreaSet' + k).getContent()
                     var backgroundColorToPush = document.getElementById('colorForEvent' + k);
                     var colorInside = backgroundColorToPush.value;
 
@@ -1401,7 +1407,7 @@
             }
             else //header got input
             {
-                if (tinyMCE.get('textAreaSet' + k).getContent() == '') //textarea no input
+                if (document.getElementById("textAreaSet" + k).value == "") //textarea no input ===> tinyMCE.get('textAreaSet' + k).getContent() == ''
                 {
                     var headerEventToPush = document.getElementById('uniqueheaderForEvent' + k).innerText;
                     var descriptionEventToPush = "Notes...";
@@ -1416,7 +1422,7 @@
                 }
                 else {
                     var headerEventToPush = document.getElementById('uniqueheaderForEvent' + k).innerText;
-                    var descriptionEventToPush = tinyMCE.get('textAreaSet' + k).getContent();
+                    var descriptionEventToPush = document.getElementById("textAreaSet" + k).value; //tinyMCE.get('textAreaSet' + k).getContent()
                     var backgroundColorToPush = document.getElementById('colorForEvent' + k);
                     var colorInside = backgroundColorToPush.value;
 
